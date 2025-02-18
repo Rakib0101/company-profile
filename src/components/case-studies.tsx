@@ -58,8 +58,8 @@ export function CaseStudies() {
   return (
     <section className="py-20 bg-black text-white" id="showcase">
       <div className="container">
-        <div className="mb-16">
-          <span className="text-white bg-primary rounded-full px-4 py-1 text-sm font-bold inline-block">Our Works</span>
+        <div className="mb-16 flex flex-col items-center text-center">
+          <span className="text-white bg-primary rounded-full px-4 py-0.5 text-sm font-bold inline-block">Our Works</span>
           <h2 className="mt-2 font-display text-3xl sm:text-7xl font-bold tracking-tight">
             Case studies
           </h2>

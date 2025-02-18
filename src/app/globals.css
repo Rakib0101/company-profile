@@ -80,14 +80,6 @@ body {
   animation-play-state: paused;
 }
 
-.brand-item {
-  flex-shrink: 0;
-  width: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .brand-text {
   font-weight: bold;
   font-size: 4.5rem;
