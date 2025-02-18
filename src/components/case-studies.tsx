@@ -4,6 +4,12 @@ import Image from "next/image"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useState } from "react"
+
+// Define types for DOM elements
+interface CaseStudyElement extends HTMLElement {
+  querySelector(selector: string): HTMLElement | null;
+}
 
 const caseStudies = [
   {
@@ -20,7 +26,7 @@ const caseStudies = [
   },
   {
     title: "Empower your finance with alpine banking",
-    description: "Alpine Empower Banking successfully transformed its vision into reality by offering a comprehensive financial ecosystem that addressed clients’ needs for...",
+    description: "Alpine Empower Banking successfully transformed its vision into reality by offering a comprehensive financial ecosystem that addressed clients' needs for...",
     image: "/images/projects/project-03.webp",
     category: "Fintech",
   },
@@ -63,9 +69,17 @@ const caseStudies = [
 ]
 
 export function CaseStudies() {
-  gsap.registerPlugin(ScrollTrigger)
-  
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   useGSAP(() => {
+    if (!isClient) return
+
+    gsap.registerPlugin(ScrollTrigger)
+    
     // Create a timeline for header animations
     const headerTl = gsap.timeline({
       scrollTrigger: {
@@ -95,17 +109,31 @@ export function CaseStudies() {
         ease: "power3.out"
       }, "-=0.6")
 
-    // Animate case study items with advanced effects
-    gsap.utils.toArray(".case-study-item").forEach((item: any, i) => {
-      const image = item.querySelector(".study-image")
-      const content = item.querySelector(".study-content")
-      const category = item.querySelector(".study-category")
+    // Horizontal scroll animation
+    const horizontalSection = gsap.utils.toArray<CaseStudyElement>(".case-study-item")
+    
+    gsap.to(horizontalSection, {
+      xPercent: -100 * (horizontalSection.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".case-studies-container",
+        pin: true,
+        scrub: 1,
+        snap: 1 / (horizontalSection.length - 1),
+        end: () => "+=" + (document.querySelector(".case-studies-container") as HTMLElement)?.offsetWidth,
+      }
+    })
+
+    // Individual case study animations
+    horizontalSection.forEach((item: CaseStudyElement, i) => {
+      const image = item.querySelector(".study-image") as HTMLElement
+      const content = item.querySelector(".study-content") as HTMLElement
+      const category = item.querySelector(".study-category") as HTMLElement
       
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: item,
-          start: "top 80%",
-          end: "bottom 20%",
+          start: "left center",
           toggleActions: "play none none reverse",
         }
       })
@@ -136,13 +164,13 @@ export function CaseStudies() {
     })
 
     // Enhanced hover animations
-    gsap.utils.toArray(".case-study-item").forEach((item: any) => {
-      const image = item.querySelector(".study-image")
-      const title = item.querySelector(".study-title")
+    horizontalSection.forEach((item: CaseStudyElement) => {
+      const image = item.querySelector(".study-image") as HTMLElement
+      const title = item.querySelector(".study-title") as HTMLElement
       
       item.addEventListener("mouseenter", () => {
         gsap.to(item, {
-          y: -10,
+          scale: 1.02,
           duration: 0.4,
           ease: "power2.out"
         })
@@ -152,14 +180,14 @@ export function CaseStudies() {
           ease: "power2.out"
         })
         gsap.to(title, {
-          color: "#6366f1", // or your primary color
+          color: "#6366f1",
           duration: 0.3
         })
       })
 
       item.addEventListener("mouseleave", () => {
         gsap.to(item, {
-          y: 0,
+          scale: 1,
           duration: 0.4,
           ease: "power2.out"
         })
@@ -174,7 +202,7 @@ export function CaseStudies() {
         })
       })
     })
-  })
+  }, [isClient])
 
   return (
     <section className="py-20 bg-black text-white" id="showcase">
