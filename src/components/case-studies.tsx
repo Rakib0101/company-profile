@@ -39,6 +39,18 @@ const caseStudies = [
     image: "/images/projects/project-06.png",
     category: "Health",
   },
+  {
+    title: "Ambel - Business Solution",
+    description: "Ambel is a business solution that offers a variety of business solutions for people to use. It is a popular spot for locals and tourists alike.",
+    image: "/images/projects/project-07.png",
+    category: "Business",
+  },
+  {
+    title: "Complete Car Service Solution with Raleway Mobile Tech",
+    description: "Streamline your car service with our intuitive car service management system. Book appointments effortlessly, manage your time efficiently, and let your business run smoothly with automated reminders and hassle-free rescheduling.",
+    image: "/images/projects/project-08.jpeg",
+    category: "Services",
+  },
 ]
 
 export function CaseStudies() {
