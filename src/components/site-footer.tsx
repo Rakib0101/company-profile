@@ -44,7 +44,7 @@ export function SiteFooter() {
             })}
           </div> */}
         </div>
-        <div className="mt-12 border-t border-white/50 pt-8 text-center text-sm text-muted-foreground">
+        <div className="mt-12 border-t border-white/20 pt-8 text-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Way-Wise Tech INC. All rights reserved.</p>
         </div>
       </div>
