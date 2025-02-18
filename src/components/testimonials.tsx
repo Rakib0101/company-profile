@@ -49,7 +49,7 @@ export function Testimonials() {
           {testimonials.map((testimonial, i) => (
             <Card
               key={i}
-              className="relative overflow-hidden border-none bg-background/50 backdrop-blur-sm"
+              className="relative overflow-hidden border-none bg-background/50 backdrop-blur-sm shadow-lg"
             >
               <CardContent className="size-full flex flex-col gap-6 p-6">
                 <blockquote className="text-muted-foreground">

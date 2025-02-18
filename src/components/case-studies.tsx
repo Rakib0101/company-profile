@@ -4,53 +4,59 @@ import Image from "next/image"
 
 const caseStudies = [
   {
-    title: "Jobflix - Job Portal",
-    description: "Jobflix is a job portal that offers a variety of jobs for people to apply for. It is a popular spot for locals and tourists alike.",
-    image: "/images/projects/project-01.png",
-    category: "Job Portal",
+    title: "Transforming Micro-Book Experiences",
+    description: "This mobile application, launched in 2023, has achieved significant success with over 1 million users globally and is available on ...",
+    image: "/images/projects/project-01.webp",
+    category: "Fitness Industry",
   },
   {
-    title: "Jobpilot - Job Portal",
-    description: "Jobpilot is a job portal that offers a variety of jobs for people to apply for. It is a popular spot for locals and tourists alike.",
-    image: "/images/projects/project-02.png",
-    category: "Job Portal",
+    title: "Enhancing Fitness for Australians",
+    description: "Fitmate is an innovative fitness app designed to transform the way Australians engage with their fitness routines. By partnering with...",
+    image: "/images/projects/project-02.webp",
+    category: "Web Application",
   },
   {
-    title: "Adlisting - PHP Scripts for listing ads",
-    description: "Adlisting is a listing ads on codecanyon. It is made with PHP, MySQL, and Bootstrap. It is a simple and easy to use script for listing ads.",
-    image: "/images/projects/project-03.png",
-    category: "Listing Ads",
+    title: "Empower your finance with alpine banking",
+    description: "Alpine Empower Banking successfully transformed its vision into reality by offering a comprehensive financial ecosystem that addressed clients’ needs for...",
+    image: "/images/projects/project-03.webp",
+    category: "Fintech",
   },
   {
-    title: "a1 Car - Premier Car Rental Journey in Dubai",
-    description: "a1 Car is a car rental company that offers a variety of cars for rent. It is a popular spot for locals and tourists alike.",
-    image: "/images/projects/project-04.png",
-    category: "Rentals",
+    title: "Navigating the future of distributed energy systems",
+    description: "The CRM platform for Akij Cement revolutionizes the referral system. Specifically tailored for engineers and masons, it provides intuitive tools..",
+    image: "/images/projects/project-04.webp",
+    category: "Full Stack",
   },
   {
-    title: "Mi Cafecito - Coffee Shop",
-    description: "Mi Cafecito is a coffee shop that offers a variety of coffee and pastries. It is a popular spot for locals and tourists alike.",
-    image: "/images/projects/project-05.png",
-    category: "Food",
+    title: "Akij Cement&apos;s Digitalized Referrals",
+    description: "The CRM platform for Akij Cement revolutionizes the referral system. Specifically tailored for engineers and masons, it provides intuitive tools...",
+    image: "/images/projects/project-05.webp",
+    category: "Web Application",
   },
   {
-    title: "Complete Appointment Solution with Appointly",
-    description: "Streamline your scheduling with our intuitive appointment management system. Book appointments effortlessly, manage your time efficiently, and let your business run smoothly with automated reminders and hassle-free rescheduling.",
-    image: "/images/projects/project-06.png",
-    category: "Health",
+    title: "Revolutionize Your Dining Experience Today",
+    description: "LeKlub aims to promote partner restaurants and encourage users to discover new establishments. Through a strong media presence on social...",
+    image: "/images/projects/project-06.webp",
+    category: "SaaS",
   },
   {
-    title: "Ambel - Business Solution",
-    description: "Ambel is a business solution that offers a variety of business solutions for people to use. It is a popular spot for locals and tourists alike.",
-    image: "/images/projects/project-07.png",
-    category: "Business",
+    title: "Intuitive vehicle management solutions",
+    description: "Zantrik team approached us with an exciting challenge: Revamping their app from top to bottom to take the user experience...",
+    image: "/images/projects/project-07.webp",
+    category: "Automobile",
   },
   {
-    title: "Complete Car Service Solution with Raleway Mobile Tech",
-    description: "Streamline your car service with our intuitive car service management system. Book appointments effortlessly, manage your time efficiently, and let your business run smoothly with automated reminders and hassle-free rescheduling.",
-    image: "/images/projects/project-08.jpeg",
-    category: "Services",
+    title: "Ways & Villas: Maldivian Travel Redesign",
+    description: "Discover romantic getaways, family vacations, private island getaways, water sports, lush spa treatments, and decadent culinary adventures. Start planning the...",
+    image: "/images/projects/project-08.webp",
+    category: "Travel & Tourism",
   },
+  {
+    title: "Onethread project management software redesign",
+    description: "Onethread, the project management software redesign that is revolutionising the way teams collaborate and achieve their goals.",
+    image: "/images/projects/project-09.webp",
+    category: "Project Management",
+  }
 ]
 
 export function CaseStudies() {
@@ -59,12 +65,12 @@ export function CaseStudies() {
     <section className="py-20 bg-black text-white" id="showcase">
       <div className="container">
         <div className="mb-16 flex flex-col items-center text-center">
-          <span className="text-white bg-primary rounded-full px-4 py-0.5 text-sm font-bold inline-block">Our Works</span>
-          <h2 className="mt-2 font-display text-3xl sm:text-7xl font-bold tracking-tight">
-            Case studies
+          <span className="text-white bg-primary rounded-full px-4 py-0.5 text-sm font-bold inline-block">Showcase</span>
+          <h2 className="font-display text-3xl sm:text-7xl font-bold tracking-tight mt-6">
+            Featured Projects
           </h2>
           <p className="mt-4 text-gray-400 max-w-2xl text-sm sm:text-lg">
-            Well-crafted development and design solutions are essential present products that your audience will fall in love with
+            Showcasing our expertise in building innovative digital solutions across various industries and technologies
           </p>
         </div>
 
@@ -84,9 +90,9 @@ export function CaseStudies() {
                   />
                 </div>
                 <div className="space-y-4 col-span-2">
-                  <div className="text-indigo-400 font-medium">
+                  <span className="text-white max-w-max bg-primary/50 text-sm px-3 py-1.5 rounded-full font-medium">
                     {study.category}
-                  </div>
+                  </span>
                   <h3 className="text-2xl sm:text-4xl font-bold">
                     {study.title}
                   </h3>

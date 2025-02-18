@@ -6,7 +6,7 @@ import { useState } from "react";
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-white">
       <div className="container flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2 py-3">
             <Image

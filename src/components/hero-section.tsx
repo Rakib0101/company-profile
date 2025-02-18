@@ -32,21 +32,11 @@ export function HeroSection() {
             the digital age.
           </p>
           <div className="flex justify-center items-center gap-4 mt-8">
-            <Link href="https://www.upwork.com/agencies/1826147102571778048/" target="_blank">
-              <Button
-                size="lg"
-                className="px-12 py-3 font-medium rounded-full text-2xl transition-all duration-300 bg-primary text-white hover:bg-primary/80"
-              >
+            <Link href="https://www.upwork.com/agencies/1826147102571778048/" target="_blank"  className="px-12 py-2.5 font-semiboid shadow-lg rounded-full text-base uppercase transition-all duration-300 bg-primary text-white hover:bg-primary/80">
               Hire Us
-            </Button>
             </Link>
-            <Link href="#showcase">
-            <Button
-              size="lg"
-              className="font-medium px-12 py-3 rounded-full text-2xl transition-all duration-300 bg-white text-primary hover:bg-primary/80 hover:text-white"
-            >
+            <Link href="#showcase" className="font-semibold px-12 py-2.5 rounded-full text-base uppercase shadow-lg transition-all duration-300 bg-white text-primary hover:bg-primary/80 hover:text-white">
                 Showcase
-              </Button>
             </Link>
           </div>
         </div>
