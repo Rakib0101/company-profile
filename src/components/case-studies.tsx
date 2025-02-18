@@ -74,7 +74,7 @@ export function CaseStudies() {
                 key={index}
                 className="grid md:grid-cols-5 gap-8 items-center"
               >
-                <div className={`relative overflow-hidden col-span-3 rounded-2xl ${index % 2 === 0 ? "md:order-last" : ""}`}>
+                <div className={`relative overflow-hidden col-span-3 rounded-2xl ${index % 2 === 0 ? "md:order-last md:ms-20" : "md:order-first md:me-20"}`}>
                   <Image
                     src={study.image}
                     alt={study.title}
