@@ -28,7 +28,7 @@ export function SiteFooter() {
             innovative solutions that empower businesses to thrive in the
             digital age.
           </p>
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
@@ -42,9 +42,9 @@ export function SiteFooter() {
                 </Link>
               );
             })}
-          </div>
+          </div> */}
         </div>
-        <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
+        <div className="mt-12 border-t border-white/50 pt-8 text-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Way-Wise Tech INC. All rights reserved.</p>
         </div>
       </div>
