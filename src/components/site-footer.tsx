@@ -17,7 +17,7 @@ export function SiteFooter() {
           <Link href="/" className="flex items-center space-x-2 py-3">
             <Image
               src="/images/logo-light.webp"
-              alt="Design Monks Logo"
+              alt="Way-Wise Tech INC Logo"
               width={260}
               height={60}
               className="aspect-auto w-full max-w-[250px]"
