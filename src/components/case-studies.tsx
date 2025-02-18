@@ -109,31 +109,17 @@ export function CaseStudies() {
         ease: "power3.out"
       }, "-=0.6")
 
-    // Horizontal scroll animation
-    const horizontalSection = gsap.utils.toArray<CaseStudyElement>(".case-study-item")
-    
-    gsap.to(horizontalSection, {
-      xPercent: -100 * (horizontalSection.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".case-studies-container",
-        pin: true,
-        scrub: 1,
-        snap: 1 / (horizontalSection.length - 1),
-        end: () => "+=" + (document.querySelector(".case-studies-container") as HTMLElement)?.offsetWidth,
-      }
-    })
-
-    // Individual case study animations
-    horizontalSection.forEach((item: CaseStudyElement, i) => {
-      const image = item.querySelector(".study-image") as HTMLElement
-      const content = item.querySelector(".study-content") as HTMLElement
-      const category = item.querySelector(".study-category") as HTMLElement
+    // Animate case study items with advanced effects
+    gsap.utils.toArray(".case-study-item").forEach((item: any, i) => {
+      const image = item.querySelector(".study-image")
+      const content = item.querySelector(".study-content")
+      const category = item.querySelector(".study-category")
       
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: item,
-          start: "left center",
+          start: "top 80%",
+          end: "bottom 20%",
           toggleActions: "play none none reverse",
         }
       })
@@ -164,13 +150,13 @@ export function CaseStudies() {
     })
 
     // Enhanced hover animations
-    horizontalSection.forEach((item: CaseStudyElement) => {
-      const image = item.querySelector(".study-image") as HTMLElement
-      const title = item.querySelector(".study-title") as HTMLElement
+    gsap.utils.toArray(".case-study-item").forEach((item: any) => {
+      const image = item.querySelector(".study-image")
+      const title = item.querySelector(".study-title")
       
       item.addEventListener("mouseenter", () => {
         gsap.to(item, {
-          scale: 1.02,
+          y: -10,
           duration: 0.4,
           ease: "power2.out"
         })
@@ -180,14 +166,14 @@ export function CaseStudies() {
           ease: "power2.out"
         })
         gsap.to(title, {
-          color: "#6366f1",
+          color: "#6366f1", // or your primary color
           duration: 0.3
         })
       })
 
       item.addEventListener("mouseleave", () => {
         gsap.to(item, {
-          scale: 1,
+          y: 0,
           duration: 0.4,
           ease: "power2.out"
         })
