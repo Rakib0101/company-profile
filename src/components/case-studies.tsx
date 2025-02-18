@@ -1,6 +1,9 @@
 "use client"
 
 import Image from "next/image"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 const caseStudies = [
   {
@@ -60,54 +63,164 @@ const caseStudies = [
 ]
 
 export function CaseStudies() {
+  gsap.registerPlugin(ScrollTrigger)
+  
+  useGSAP(() => {
+    // Create a timeline for header animations
+    const headerTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#showcase",
+        start: "top 80%",
+      }
+    })
+
+    headerTl
+      .from(".showcase-tag", {
+        opacity: 0,
+        scale: 0,
+        duration: 0.8,
+        ease: "elastic.out(1, 0.5)"
+      })
+      .from(".showcase-title", {
+        opacity: 0,
+        y: 100,
+        rotationX: 45,
+        duration: 1,
+        ease: "power4.out"
+      }, "-=0.4")
+      .from(".showcase-description", {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=0.6")
+
+    // Animate case study items with advanced effects
+    gsap.utils.toArray(".case-study-item").forEach((item: any, i) => {
+      const image = item.querySelector(".study-image")
+      const content = item.querySelector(".study-content")
+      const category = item.querySelector(".study-category")
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        }
+      })
+
+      tl.from(item, {
+        opacity: 0,
+        duration: 0.6,
+      })
+      .from(image, {
+        scale: 1.2,
+        opacity: 0,
+        rotationY: i % 2 === 0 ? 15 : -15,
+        duration: 1.2,
+        ease: "power3.out"
+      }, "-=0.4")
+      .from(content, {
+        x: i % 2 === 0 ? 100 : -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+      }, "-=0.8")
+      .from(category, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.6,
+        ease: "back.out(1.7)"
+      }, "-=0.6")
+    })
+
+    // Enhanced hover animations
+    gsap.utils.toArray(".case-study-item").forEach((item: any) => {
+      const image = item.querySelector(".study-image")
+      const title = item.querySelector(".study-title")
+      
+      item.addEventListener("mouseenter", () => {
+        gsap.to(item, {
+          y: -10,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+        gsap.to(image, {
+          scale: 1.1,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+        gsap.to(title, {
+          color: "#6366f1", // or your primary color
+          duration: 0.3
+        })
+      })
+
+      item.addEventListener("mouseleave", () => {
+        gsap.to(item, {
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+        gsap.to(image, {
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+        gsap.to(title, {
+          color: "white",
+          duration: 0.3
+        })
+      })
+    })
+  })
 
   return (
     <section className="py-20 bg-black text-white" id="showcase">
       <div className="container">
         <div className="mb-16 flex flex-col items-center text-center">
-          <span className="text-white bg-primary rounded-full px-4 py-0.5 text-sm font-bold inline-block">Showcase</span>
-          <h2 className="font-display text-3xl sm:text-7xl font-bold tracking-tight mt-6">
+          <span className="showcase-tag text-white bg-primary rounded-full px-4 py-0.5 text-sm font-bold inline-block">
+            Showcase
+          </span>
+          <h2 className="showcase-title font-display text-3xl sm:text-7xl font-bold tracking-tight mt-6">
             Featured Projects
           </h2>
-          <p className="mt-4 text-gray-400 max-w-2xl text-sm sm:text-lg">
+          <p className="showcase-description mt-4 text-gray-400 max-w-2xl text-sm sm:text-lg">
             Showcasing our expertise in building innovative digital solutions across various industries and technologies
           </p>
         </div>
 
-        <div className="grid gap-16 sm:gap-32">
+        <div className="case-studies-grid grid gap-16 sm:gap-32">
           {caseStudies.map((study, index) => (
-              <div
-                key={index}
-                className="grid md:grid-cols-5 gap-8 items-center"
-              >
-                <div className={`relative overflow-hidden col-span-3 rounded-2xl ${index % 2 === 0 ? "md:order-last md:ms-20" : "md:order-first md:me-20"}`}>
-                  <Image
-                    src={study.image}
-                    alt={study.title}
-                    width={800}
-                    height={500}
-                    className="w-full transition-transform hover:scale-105 duration-300"
-                  />
-                </div>
-                <div className="space-y-4 col-span-2">
-                  <span className="text-white max-w-max bg-primary/50 text-sm px-3 py-1.5 rounded-full font-medium">
-                    {study.category}
-                  </span>
-                  <h3 className="text-2xl sm:text-4xl font-bold">
-                    {study.title}
-                  </h3>
-                  <p className="text-gray-400">
-                    {study?.description}
-                  </p>
-                  {/* <a 
-                    href="#" 
-                    className="inline-block text-indigo-400 hover:text-indigo-300 transition-colors"
-                  >
-                    Check Full Case Study
-                  </a> */}
-                </div>
+            <div
+              key={index}
+              className="case-study-item grid md:grid-cols-5 gap-8 items-center"
+            >
+              <div className={`relative overflow-hidden col-span-3 rounded-2xl ${
+                index % 2 === 0 ? "md:order-last md:ms-20" : "md:order-first md:me-20"
+              }`}>
+                <Image
+                  src={study.image}
+                  alt={study.title}
+                  width={800}
+                  height={500}
+                  className="study-image w-full transition-transform duration-300"
+                />
               </div>
-            ))}
+              <div className="study-content space-y-4 col-span-2">
+                <span className="study-category text-white max-w-max bg-primary/50 text-sm px-3 py-1.5 rounded-full font-medium">
+                  {study.category}
+                </span>
+                <h3 className="study-title text-2xl sm:text-4xl font-bold">
+                  {study.title}
+                </h3>
+                <p className="text-gray-400">
+                  {study?.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
