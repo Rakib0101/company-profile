@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
+// import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
 
-const socialLinks = [
-  { name: "Twitter", icon: Twitter, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Instagram", icon: Instagram, href: "#" },
-  { name: "GitHub", icon: Github, href: "#" },
-];
+// const socialLinks = [
+//   { name: "Twitter", icon: Twitter, href: "#" },
+//   { name: "LinkedIn", icon: Linkedin, href: "#" },
+//   { name: "Instagram", icon: Instagram, href: "#" },
+//   { name: "GitHub", icon: Github, href: "#" },
+// ];
 
 export function SiteFooter() {
   return (
