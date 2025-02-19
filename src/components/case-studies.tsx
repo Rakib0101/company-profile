@@ -6,10 +6,6 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useEffect, useState } from "react"
 
-// Define types for DOM elements
-interface CaseStudyElement extends HTMLElement {
-  querySelector(selector: string): HTMLElement | null;
-}
 
 const caseStudies = [
   {
@@ -110,7 +106,7 @@ export function CaseStudies() {
       }, "-=0.6")
 
     // Animate case study items with advanced effects
-    gsap.utils.toArray(".case-study-item").forEach((item: any, i) => {
+    gsap.utils.toArray<Element>(".case-study-item").forEach((item: Element, i) => {
       const image = item.querySelector(".study-image")
       const content = item.querySelector(".study-content")
       const category = item.querySelector(".study-category")
@@ -150,7 +146,7 @@ export function CaseStudies() {
     })
 
     // Enhanced hover animations
-    gsap.utils.toArray(".case-study-item").forEach((item: any) => {
+    gsap.utils.toArray<Element>(".case-study-item").forEach((item: Element) => {
       const image = item.querySelector(".study-image")
       const title = item.querySelector(".study-title")
       
