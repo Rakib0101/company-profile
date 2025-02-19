@@ -81,7 +81,7 @@ export function Services() {
           {services.map((service, i) => (
             <Card
               key={i}
-              className="group relative overflow-hidden border-none transition-all hover:-translate-y-1 hover:shadow-xl"
+              className="group relative overflow-hidden border-none transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className={`absolute inset-0 ${service.color} opacity-40`} />
               <CardContent className="relative space-y-4 p-6">
