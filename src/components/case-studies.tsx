@@ -4,7 +4,10 @@ import Image from "next/image"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
+import Particles from "react-particles"
+import { Engine } from "tsparticles-engine"
+import { loadSlim } from "tsparticles-slim"
 
 
 const caseStudies = [
@@ -66,6 +69,15 @@ const caseStudies = [
 
 export function CaseStudies() {
   const [isClient, setIsClient] = useState(false)
+
+  // Updated particles initialization
+  const particlesInit = useCallback(async (engine: Engine) => {
+    try {
+      await loadSlim(engine);
+    } catch (error) {
+      console.error("Error initializing particles:", error);
+    }
+  }, []);
 
   useEffect(() => {
     setIsClient(true)
@@ -157,7 +169,7 @@ export function CaseStudies() {
           ease: "power2.out"
         })
         gsap.to(image, {
-          scale: 1.1,
+          sk: 1.1,
           duration: 0.4,
           ease: "power2.out"
         })
@@ -187,8 +199,94 @@ export function CaseStudies() {
   }, [isClient])
 
   return (
-    <section className="py-20 bg-black text-white" id="showcase">
-      <div className="container">
+    <section className="py-20 bg-black text-white min-h-screen relative overflow-hidden" id="showcase">
+      <div className="absolute inset-0">
+        <Particles
+          id="fireflies"
+          init={particlesInit}
+          options={{
+            background: {
+              color: {
+                value: "transparent"
+              }
+            },
+            fpsLimit: 60,
+            interactivity: {
+              events: {
+                onClick: {
+                  enable: true,
+                  mode: "push"
+                },
+                onHover: {
+                  enable: true,
+                  mode: "repulse"
+                },
+                resize: true
+              },
+              modes: {
+                push: {
+                  quantity: 4
+                },
+                repulse: {
+                  distance: 100,
+                  duration: 0.4
+                }
+              }
+            },
+            particles: {
+              color: {
+                value: "#ed5323"
+              },
+              move: {
+                direction: "none",
+                enable: true,
+                outModes: {
+                  default: "out"
+                },
+                random: true,
+                speed: 1,
+                straight: false
+              },
+              number: {
+                density: {
+                  enable: true,
+                  area: 500
+                },
+                value: 80,
+                limit: 100
+              },
+              opacity: {
+                value: 0.5,
+                animation: {
+                  enable: true,
+                  speed: 0.5,
+                  minimumValue: 0.1,
+                  sync: false
+                }
+              },
+              shape: {
+                type: "circle"
+              },
+              size: {
+                value: { min: 4, max: 8 },
+                animation: {
+                  enable: true,
+                  speed: 2,
+                  minimumValue: 0.1,
+                  sync: false
+                }
+              }
+            },
+            detectRetina: true,
+            fullScreen: {
+              enable: false,
+              zIndex: 1
+            }
+          }}
+          className="h-full w-full"
+        />
+      </div>
+      <div className="container relative z-10">
         <div className="mb-16 flex flex-col items-center text-center">
           <span className="showcase-tag text-white bg-primary rounded-full px-4 py-0.5 text-sm font-bold inline-block">
             Showcase
