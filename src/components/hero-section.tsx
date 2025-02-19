@@ -2,8 +2,42 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 export function HeroSection() {
+  const image2Ref = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  
+    // Create the animation
+    gsap.from(image2Ref.current, {
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: image2Ref.current,
+        start: "top center",
+        end: "bottom center",
+        scrub: 2,
+      },
+    });
+    gsap.to(image2Ref.current, {
+      y: -100, // equivalent to previous -mt-32
+      duration: 1,
+      scrollTrigger: {
+        trigger: image2Ref.current,
+        start: "top center",
+        end: "bottom center",
+      },
+    });
+    
+    return () => {
+      // Cleanup
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   return (
     <section className="relative min-h-screen bg-white py-20" id="about">
@@ -17,12 +51,14 @@ export function HeroSection() {
                 <br />
                 SKILLED IN
                 <br />
-                <span className="inline-block text-5xl relative text-indigo-600 mr-4 after:content-[''] after:block after:w-full after:h-1 after:bg-indigo-600 after:absolute after:bottom-0 after:left-0">
+                <span className="inline-block text-5xl relative text-indigo-600 mr-4">
                   Web <br /> Design
+                  <span className="absolute bottom-0 left-0 w-full h-1 bg-indigo-600 animate-highlight"></span>
                 </span>
                 AND
-                <span className="inline-block text-5xl relative text-primary ml-4 after:content-[''] after:block after:w-full after:h-1 after:bg-primary after:absolute after:bottom-0 after:left-0">
+                <span className="inline-block text-5xl relative text-primary ml-4">
                   Development
+                  <span className="absolute bottom-0 left-0 w-full h-1 bg-primary animate-highlight-delay"></span>
                 </span>
               </h1>
             </div>
@@ -55,8 +91,21 @@ export function HeroSection() {
           {/* Right Column - Image & Video */}
           <div className="relative">
             <div className="flex items-center justify-center">
-              <Image src="/images/hero-right-1.png" alt="Team" width={220} height={600} className="object-cover lg:w-1/2 h-auto" />
-              <Image src="/images/hero-right-2.jpg" alt="Play" width={220} height={600} className="object-cover lg:w-1/2 h-auto rounded-r-full -mt-32" />
+              <Image 
+                src="/images/hero-right-1.png" 
+                alt="Team" 
+                width={220} 
+                height={600} 
+                className="object-cover lg:w-1/2 h-auto" 
+              />
+              <Image 
+                ref={image2Ref}
+                src="/images/hero-right-2.jpg" 
+                alt="Play" 
+                width={220} 
+                height={600} 
+                className="object-cover lg:w-1/2 h-auto rounded-r-full" 
+              />
             </div>
           </div>
         </div>
