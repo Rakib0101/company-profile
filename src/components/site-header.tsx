@@ -17,7 +17,7 @@ export function SiteHeader() {
               className="aspect-auto w-full max-w-[200px] sm:max-w-[250px]"
             />
         </Link>
-        <nav className="hidden sm:flex items-center justify-center space-x-6 text-lg">
+        <nav className="hidden md:flex items-center justify-center space-x-6 text-lg">
           <Link href="#about" className="transition hover:text-primary">
             About
           </Link>
@@ -31,13 +31,13 @@ export function SiteHeader() {
             Customer Feedback
           </Link>
         </nav>
-        <button onClick={() => setIsOpen(!isOpen)} className="inline-flex bg-black rounded-sm p-2.5 flex-col gap-1 items-center justify-center sm:hidden">
+        <button onClick={() => setIsOpen(!isOpen)} className="inline-flex bg-black rounded-sm p-2.5 flex-col gap-1 items-center justify-center md:hidden">
           <span className={`block w-6 h-[2px] bg-primary transition-all duration-300 ${isOpen ? 'translate-y-1.5 rotate-45' : ''}`}></span>
           <span className={`block w-6 h-[2px] bg-primary transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
           <span className={`block w-6 h-[2px] bg-primary transition-all duration-300 ${isOpen ? '-translate-y-1.5 -rotate-45' : ''}`}></span>
         </button>
 
-        <div className={`${isOpen ? 'translate-x-0 visible' : '-translate-x-full invisible'} transition-all duration-300 sm:hidden absolute top-full left-0 w-full bg-background`}>
+        <div className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-all duration-300 md:hidden absolute !z-50 text-black top-full left-0 w-full bg-white`}>
           <nav className="flex flex-col gap-4 p-4 border-t border-border">
             <Link href="#about" className="transition hover:text-primary">
               About
