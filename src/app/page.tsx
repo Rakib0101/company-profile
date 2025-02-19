@@ -4,6 +4,7 @@ import BrandSlider from "@/components/brand-slider"
 import { CaseStudies } from "@/components/case-studies"
 import { Testimonials } from "@/components/testimonials"
 import { SiteFooter } from "@/components/site-footer"
+import  { Services } from "@/components/services"
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <SiteHeader />
       <HeroSection />
       <BrandSlider />
+      <Services />
       <CaseStudies />
       <Testimonials />
       <SiteFooter />

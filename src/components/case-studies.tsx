@@ -291,7 +291,7 @@ export function CaseStudies() {
           <span className="showcase-tag text-white bg-primary rounded-full px-4 py-0.5 text-sm font-bold inline-block">
             Showcase
           </span>
-          <h2 className="showcase-title font-display text-3xl sm:text-7xl font-bold tracking-tight mt-6">
+          <h2 className="showcase-title font-teko uppercase text-3xl sm:text-7xl font-bold tracking-wide mt-6">
             Featured Projects
           </h2>
           <p className="showcase-description mt-4 text-gray-400 max-w-2xl text-sm sm:text-lg">

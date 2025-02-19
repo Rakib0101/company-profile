@@ -21,6 +21,9 @@ export function SiteHeader() {
           <Link href="#about" className="transition hover:text-primary">
             About
           </Link>
+          <Link href="#services" className="transition hover:text-primary">
+            Services
+          </Link>
           <Link href="#showcase" className="transition hover:text-primary">
             Showcase
           </Link>
@@ -38,6 +41,9 @@ export function SiteHeader() {
           <nav className="flex flex-col gap-4 p-4 border-t border-border">
             <Link href="#about" className="transition hover:text-primary">
               About
+            </Link>
+            <Link href="#services" className="transition hover:text-primary">
+              Services
             </Link>
             <Link href="#showcase" className="transition hover:text-primary">
               Showcase

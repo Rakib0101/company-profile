@@ -40,7 +40,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-white py-20" id="about">
+    <section className="relative min-h-screen hero-section py-20" id="about">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
