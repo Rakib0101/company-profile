@@ -354,10 +354,9 @@ export function CaseStudies() {
               {/* Large category text that spans the full width */}
               <span
                 className="case-study-category absolute top-[-20%] left-0 font-teko text-[8rem] md:text-[10rem] lg:text-[8rem] 
-                font-bold whitespace-nowrap pointer-events-none z-0"
+                font-bold whitespace-nowrap pointer-events-none z-0 text-transparent"
                 style={{
                   WebkitTextStroke: "2px rgba(255, 255, 255, 0.5)",
-                  color: "transparent",
                   opacity: 1,
                 }}
               >
