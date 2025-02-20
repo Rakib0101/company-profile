@@ -71,6 +71,23 @@ module.exports = {
         'bounce-2': 'bounce 3s infinite 1.5s',
       },
       keyframes: {
+        'blob-bounce': {
+          '0%': {
+            transform: 'translate(-100%, -100%) translate3d(0, 0, 0)',
+          },
+          '25%': {
+            transform: 'translate(-100%, -100%) translate3d(100%, 0, 0)',
+          },
+          '50%': {
+            transform: 'translate(-100%, -100%) translate3d(100%, 100%, 0)',
+          },
+          '75%': {
+            transform: 'translate(-100%, -100%) translate3d(0, 100%, 0)',
+          },
+          '100%': {
+            transform: 'translate(-100%, -100%) translate3d(0, 0, 0)',
+          },
+        },
         slideUnderline: {
           '0%': {
             transform: 'scaleX(0)',
