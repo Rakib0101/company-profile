@@ -365,7 +365,7 @@ export function CaseStudies() {
 
               {/* Content container with proper z-index */}
               <div
-                className={`relative z-10 space-y-6 p-8 ${
+                className={`relative z-10 space-y-6 px-8 ${
                   index % 2 === 0
                     ? "md:order-last md:ms-20"
                     : "md:order-first md:me-20"
