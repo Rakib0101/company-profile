@@ -1,5 +1,10 @@
+"use client"
+
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
+import { useEffect, useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 
 const services = [
   {
@@ -68,8 +73,40 @@ const services = [
 ]
 
 export function Services() {
+  const sectionRef = useRef(null)
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+    
+    // Fade in cards when they come into view
+    cardsRef.current.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom-=100",
+          },
+        }
+      )
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
+
   return (
-    <section className="py-20" id="services">
+    <section className="py-20" id="services" ref={sectionRef}>
       <div className="container">
         <div className="mx-auto max-w-[58rem] text-center">
           <h2 className="font-teko text-4xl tracking-wide font-bold leading-tight sm:text-4xl md:text-5xl">
@@ -81,6 +118,7 @@ export function Services() {
           {services.map((service, i) => (
             <Card
               key={i}
+              ref={(el) => { cardsRef.current[i] = el }}
               className="group relative overflow-hidden border-none transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className={`absolute inset-0 ${service.color} opacity-40`} />
